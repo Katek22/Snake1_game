@@ -2,6 +2,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
+/**
+ * Oldest parent of the game board, responsible by viewing a window 
+ */
 public class GameFrame extends JFrame {
     private Game game;
 

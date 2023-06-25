@@ -1,5 +1,7 @@
 import java.awt.*;
-
+/**
+ * Defines Block.
+ */
 public class Block {
     private final Position position;
     private final Color color;

@@ -1,10 +1,14 @@
 import java.awt.*;
-
+/**
+ * Snake controlled by AI
+ */
 public class ArtificialSnake extends Snake{
     public ArtificialSnake(int initialBodyLength, Position initialPosition, Direction initialDirection) {
         super(initialBodyLength, initialPosition, initialDirection, Color.GREEN, new Color(45, 180, 0));
     }
-
+    /**
+     * generating position of the new move 
+     */
     @Override
     protected void makeMove(Entity[] entities) {
         Position pos = getClosestEatablePosition(entities);
@@ -20,7 +24,11 @@ public class ArtificialSnake extends Snake{
 
         setDirection(suggestedDirection);
     }
-
+    /**
+     * 
+     * @param entities
+     * @return position to be reached 
+     */
     private Position getClosestEatablePosition(Entity[] entities) {
         double smallestDiff = 1000.0;
         Position headPos = blocks[0].getPosition();
@@ -41,11 +49,19 @@ public class ArtificialSnake extends Snake{
 
         return closestPos;
     }
-
+    /**
+     * make move without changing direction
+     * @return
+     */
     private Position getNextPosition() {
         return getNextPosition(getDirection());
     }
 
+    /**
+     *  make move with changing direction
+     * @param direction
+     * @return
+     */
     private Position getNextPosition(Direction direction) {
         Position curPos = blocks[0].getPosition();
         switch (direction) {
@@ -59,7 +75,11 @@ public class ArtificialSnake extends Snake{
                 return new Position(curPos.row, curPos.col + 1);
         }
     }
-
+    /**
+     * Change direction to get to the eatable by least moves 
+     * @param eatablePosition
+     * @return direction to take
+     */
     private Direction suggestDirection(Position eatablePosition) {
         Position headPos = blocks[0].getPosition();
         if (eatablePosition.row > headPos.row) {
@@ -73,7 +93,11 @@ public class ArtificialSnake extends Snake{
         }
         return Direction.UP;
     }
-
+    /**
+     * turning of the snake
+     * @param direction
+     * @return
+     */
     private Direction getCurvedDirection(Direction direction) {
         switch (direction) {
             case DOWN:

@@ -1,3 +1,6 @@
+/**
+ * Avaible game modes.
+ */
 public enum GameMode {
     SINGLEPLAYER,
     MULTIPLAYER,

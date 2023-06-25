@@ -1,7 +1,9 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
+/**
+ * Thread to control game play.
+ */
 public class Game extends Thread{
     private int colsCount;
     private int rowsCount;
@@ -10,6 +12,10 @@ public class Game extends Thread{
     private boolean isRunning;
     private List<Score> topScores;
 
+    /**
+     * init game with given snake/s
+     * @param snakes
+     */
     public Game(Snake[] snakes) {
         this.snakes = snakes;
         colsCount = Constants.COLS_COUNT;
@@ -39,12 +45,18 @@ public class Game extends Thread{
         return entities;
     }
 
+    /**
+     *  isRunning = true;
+     */
     public void startGame() {
         isRunning = true;
         System.out.println("Starting game");
         update();
     }
 
+    /**
+     * saving scores, loading top scores, isRunning = true;
+     */
     public void gameOver() {
         saveScores();
         loadTopScores();
@@ -52,6 +64,9 @@ public class Game extends Thread{
         System.out.println("Game over");
     }
 
+    /**
+     * updating game play status, checks for collisons and giving speed rate of game play.
+     */
     public void update() {
         if (!isRunning) return;
 
@@ -78,7 +93,9 @@ public class Game extends Thread{
     public List<Score> getTopScores() {
         return topScores;
     }
-
+    /**
+     * from CSV file
+     */
     private void loadTopScores() {
         topScores = ScoreRepository.readScoresFromCSV("scores.csv");
     }
@@ -95,7 +112,9 @@ public class Game extends Thread{
             }
         }
     }
-
+    /**
+     * to CSV file
+     */
     private void saveScores() {
         List<Score> scores = new ArrayList<Score>(snakes.length);
         for (int i = 0; i < snakes.length; i++) {

@@ -1,6 +1,8 @@
 import java.awt.*;
 import java.awt.event.KeyEvent;
-
+/**
+ * Defines game modes
+ */
 public class GameManager {
     public static Game createGame(GameMode mode) {
         switch (mode) {

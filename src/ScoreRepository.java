@@ -6,7 +6,15 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Handles writing and reading scores
+ */
 public class ScoreRepository {
+	/**
+	 * Saving scores as CSV file scored in game to the specified location 
+	 * @param scores
+	 * @param filePath
+	 */
     public static void writeScoresToCSV(List<Score> scores, String filePath) {
         boolean fileExists = Files.exists(Paths.get(filePath));
 
@@ -26,7 +34,11 @@ public class ScoreRepository {
             System.err.println("Błąd podczas zapisywania do pliku CSV: " + e.getMessage());
         }
     }
-
+    /**
+     * Reading scores as CSV file scored in previous games to the stream
+     * @param filePath
+     * @return stream with scores
+     */
     public static List<Score> readScoresFromCSV(String filePath) {
         List<Score> scores = new ArrayList<>();
 

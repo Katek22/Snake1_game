@@ -1,5 +1,7 @@
 import java.awt.*;
-
+/**
+ * eatable
+ */
 public class Apple extends Eatable {
     public Apple() {
         super(new Block[]{new Block(Position.random(), Color.red)}, 1);
